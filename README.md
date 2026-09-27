@@ -21,9 +21,20 @@ The app also includes host editing/cancellation, an activity inbox, attendance f
 
 # Demo Videos
 
-| Demo1 | Demo2 |
-|:---:|:---:|
-| <video src="https://github.com/user-attachments/assets/08437812-35f3-42b6-9a7e-0ec8af2acc4e" controls></video> | <video src="https://github.com/user-attachments/assets/5d341a07-ec45-4b20-8de4-209ff6932c28" controls></video> |
+<table align="center">
+  <tr>
+    <td align="center"><b>Demo 1</b></td>
+    <td align="center"><b>Demo 2</b></td>
+  </tr>
+  <tr>
+    <td align="center">
+      <video src="https://github.com/user-attachments/assets/08437812-35f3-42b6-9a7e-0ec8af2acc4e" width="400" controls></video>
+    </td>
+    <td align="center">
+      <video src="https://github.com/user-attachments/assets/5d341a07-ec45-4b20-8de4-209ff6932c28" width="400" controls></video>
+    </td>
+  </tr>
+</table>
 
 ## Technology
 
