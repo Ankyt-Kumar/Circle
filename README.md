@@ -19,11 +19,22 @@ Built with **Kotlin, Jetpack Compose, Go, PostgreSQL, PostGIS, Firebase Authenti
   
 The app also includes host editing/cancellation, an activity inbox, attendance feedback, profile statistics, and account deletion. Optional integrations add Gemini-assisted activity suggestions, pgvector recommendations based on past joins, and FCM push notifications.
 
-# Demo Video
+# Demo Videos
 
-<div align="center">
-  <video src="https://github.com/user-attachments/assets/08437812-35f3-42b6-9a7e-0ec8af2acc4e" width="500" controls></video>
-</div>
+<table align="center">
+  <tr>
+    <td align="center"><b>Demo 1</b></td>
+    <td align="center"><b>Demo 2</b></td>
+  </tr>
+  <tr>
+    <td align="center">
+      <video src="https://github.com/user-attachments/assets/08437812-35f3-42b6-9a7e-0ec8af2acc4e" width="400" controls></video>
+    </td>
+    <td align="center">
+      <video src="https://github.com/user-attachments/assets/5d341a07-ec45-4b20-8de4-209ff6932c28" width="400" controls></video>
+    </td>
+  </tr>
+</table>
 
 ## Technology
 
