@@ -1,0 +1,10 @@
+-- Apply after 011. Repeatable; existing events retain their original venue.
+-- Sources: official operator listings and GeoCoordinates, checked 2026-09-18.
+-- Public listing does not imply a reservation, partnership or in-person inspection.
+ALTER TABLE public_venues ADD COLUMN IF NOT EXISTS source_url text NOT NULL DEFAULT '';
+ALTER TABLE public_venues ADD COLUMN IF NOT EXISTS meeting_note text NOT NULL DEFAULT '';
+UPDATE public_venues SET active=false WHERE fictional AND id IN ('koramangala-cafe','indiranagar-cafe','btm-park');
+INSERT INTO public_venues(id,name,neighborhood,latitude,longitude,verified_public,fictional,active,source_url,meeting_note) VALUES ('twc-indiranagar','Third Wave Coffee · 12th Main','Indiranagar',12.9702038,77.6386734,true,false,true,'https://stores.thirdwavecoffeeroasters.com/store-pages/third-wave-coffee-12th-main-indiranagar-bengaluru/','Meet near the public customer entrance. Confirm opening hours, group seating and purchase requirements with the venue. No reservation is included.') ON CONFLICT(id) DO NOTHING;
+INSERT INTO public_venues(id,name,neighborhood,latitude,longitude,verified_public,fictional,active,source_url,meeting_note) VALUES ('twc-btm','Third Wave Coffee · Vijaya Bank Layout','BTM Layout',12.8893686,77.6105601,true,false,true,'https://stores.thirdwavecoffeeroasters.com/store-pages/third-wave-coffee-btm-4th-stage-bengaluru/','Meet near the public customer entrance. Confirm opening hours, group seating and purchase requirements with the venue. No reservation is included.') ON CONFLICT(id) DO NOTHING;
+INSERT INTO public_venues(id,name,neighborhood,latitude,longitude,verified_public,fictional,active,source_url,meeting_note) VALUES ('twc-hsr','Third Wave Coffee · 14th Main','HSR Layout',12.9099471,77.6378504,true,false,true,'https://stores.thirdwavecoffeeroasters.com/store-pages/third-wave-coffee-hsr-layout-14th-main-bengaluru/','Meet near the public customer entrance. Confirm opening hours, group seating and purchase requirements with the venue. No reservation is included.') ON CONFLICT(id) DO NOTHING;
+INSERT INTO circle_schema_updates(name) VALUES('012_public_venues') ON CONFLICT DO NOTHING;

@@ -1,0 +1,16 @@
+<resources>
+    <style name="Theme.Circle" parent="android:style/Theme.Material.Light.NoActionBar">
+        <item name="android:fontFamily">sans</item>
+        <item name="android:windowLightStatusBar">true</item>
+        <item name="android:colorAccent">#205E4A</item>
+        <item name="android:windowActionModeOverlay">true</item>
+    </style>
+
+    <style name="Theme.Circle.Starting" parent="Theme.SplashScreen">
+        <item name="windowSplashScreenBackground">?android:attr/colorBackground</item>
+        <item name="windowSplashScreenAnimatedIcon">@drawable/circle_splash</item>
+        <item name="postSplashScreenTheme">@style/Theme.Circle</item>
+    </style>
+
+    <style name="Theme.MySplashScreen" parent="Theme.Circle.Starting" />
+</resources>

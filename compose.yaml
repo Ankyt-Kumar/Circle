@@ -1,0 +1,52 @@
+name: circle-demo
+
+services:
+  db:
+    image: postgis/postgis:16-3.5
+    environment:
+      POSTGRES_DB: circle
+      POSTGRES_USER: circle
+      POSTGRES_PASSWORD: ${POSTGRES_PASSWORD:-local-demo-only}
+
+    ports:
+      - "127.0.0.1:5432:5432"
+
+    volumes:
+      - circle_db:/var/lib/postgresql/data
+      - ./backend/db/001_schema.sql:/docker-entrypoint-initdb.d/001_schema.sql:ro
+      - ./backend/db/002_demo_seed.sql:/docker-entrypoint-initdb.d/002_demo_seed.sql:ro
+      - ./backend/db/003_accounts.sql:/docker-entrypoint-initdb.d/003_accounts.sql:ro
+      - ./backend/db/004_user_preferences.sql:/docker-entrypoint-initdb.d/004_user_preferences.sql:ro
+      - ./backend/db/005_circle_lifecycle.sql:/docker-entrypoint-initdb.d/005_circle_lifecycle.sql:ro
+      - ./backend/db/006_host_succession.sql:/docker-entrypoint-initdb.d/006_host_succession.sql:ro
+      - ./backend/db/007_safety.sql:/docker-entrypoint-initdb.d/007_safety.sql:ro
+      - ./backend/db/008_automatic_review.sql:/docker-entrypoint-initdb.d/008_automatic_review.sql:ro
+      - ./backend/db/009_community.sql:/docker-entrypoint-initdb.d/009_community.sql:ro
+      - ./backend/db/011_immediate_publishing.sql:/docker-entrypoint-initdb.d/011_immediate_publishing.sql:ro
+      - ./backend/db/012_public_venues.sql:/docker-entrypoint-initdb.d/012_public_venues.sql:ro
+      - ./backend/db/013_profiles_location_eligibility.sql:/docker-entrypoint-initdb.d/013_profiles_location_eligibility.sql:ro
+
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U circle -d circle"]
+      interval: 3s
+      timeout: 3s
+      retries: 20
+
+  api:
+    build: ./backend
+
+    environment:
+      DEMO_MODE: "true"
+      AUTH_MODE: "demo"
+      LISTEN_ADDR: ":8080"
+      DATABASE_URL: "postgres://circle:${POSTGRES_PASSWORD:-local-demo-only}@db:5432/circle?sslmode=disable"
+
+    ports:
+      - "127.0.0.1:8080:8080"
+
+    depends_on:
+      db:
+        condition: service_healthy
+
+volumes:
+  circle_db:

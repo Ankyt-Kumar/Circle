@@ -1,0 +1,9 @@
+<resources>
+    <style name="Theme.Circle.Starting" parent="Theme.SplashScreen">
+        <item name="windowSplashScreenBackground">@android:color/system_neutral1_900</item>
+        <item name="windowSplashScreenAnimatedIcon">@drawable/circle_splash</item>
+        <item name="postSplashScreenTheme">@style/Theme.Circle</item>
+    </style>
+
+    <style name="Theme.MySplashScreen" parent="Theme.Circle.Starting" />
+</resources>

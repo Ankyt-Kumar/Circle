@@ -1,0 +1,35 @@
+# macOS
+.DS_Store
+
+# Android Studio / IntelliJ
+.idea/
+.gradle/
+.kotlin/
+**/build/
+local.properties
+
+# Android signing keys
+*.keystore
+*.jks
+
+# Environment variables
+.env
+.env.*
+
+# Firebase configuration / credentials
+google-services.json
+service-account*.json
+*-firebase-adminsdk-*.json
+.firebase/
+firebase-debug.log
+
+# Local logs
+ui-debug.log
+*.log
+
+# Go build output
+backend/circle-api
+
+# Optional common Go build directories
+backend/bin/
+backend/dist/
